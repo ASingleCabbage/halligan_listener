@@ -13,3 +13,6 @@ The program uses pyttsx for TTS, which should be Windows, OSX, and Linux compati
 
 Your Halligan Helper login informaion required; edit listener.py and put your login info in.
 Finally, just run it like any other Python script.
+
+# Errors:
+If you see something like "module 'websocket' has no attribute 'create_connection'", make sure you have websocket-client installed in pip instead of websocket. Apparently one may overwrite the other. Uninstall both and reinstall websocket-client if you happen to have both installed. 
