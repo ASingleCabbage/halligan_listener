@@ -7,7 +7,7 @@ Code for handling checkouts, updates, cancels, and resolves in-place, so go wild
 It might be possible to checkout and resolve requests directly from the Python code, but I haven't looked into how info is sent to the server.
 
 # To run:
-Python 3 required. Dependency list in requirements.txt; install them from pip.
+Python 3 required. Dependency list in requirements.txt; install them from pip by doing `pip3 install -r requirements.txt`. You might want to use some sort of virtual environment.
 
 The program uses pyttsx for TTS, which should be Windows, OSX, and Linux compatible. If using a virtual environment, additional steps may be required to install additional dependencies for pyttsx. See pyttsx documentation for more info: https://pyttsx.readthedocs.io/en/latest/install.html
 
