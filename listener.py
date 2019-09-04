@@ -3,20 +3,24 @@ from json import JSONDecodeError
 from websocket import create_connection
 import requests
 import pyttsx3
-
-# This is a file where I store my login info
-import credentials
+import ssl
 
 print("Thanks for Running Halligan Listener")
 
 engine = pyttsx3.init()
 engine.setProperty('rate', 180)
 
-ws = create_connection("wss://www.halliganhelper.com/ws/ta?subscribe-broadcast")
+ws = create_connection("wss://www.halliganhelper.com/ws/ta?subscribe-broadcast", sslopt={"cert_reqs": ssl.CERT_NONE})
 
-# replace credentials.login and credentials.password with your own
+# fill this in before running
+loginEmail = ''
+loginPassword = ''
+
+assert (loginEmail != ''), 'login email not set'
+assert (loginPassword != ''), 'login password not set'
+
 r = requests.post('https://www.halliganhelper.com/api/v3/user/login/',
-                  data = {'email': credentials.login, 'password': credentials.password})
+                  data = {'email': loginEmail, 'password': loginPassword}, verify = False)
 
 def getInfo (res):
     id = res['data']['id']
