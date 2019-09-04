@@ -20,7 +20,7 @@ r = requests.post('https://www.halliganhelper.com/api/v3/user/login/',
 
 def getInfo (res):
     id = res['data']['id']
-    info = requests.get('https://www.halliganhelper.com/api/v3/school/courses/16/requests/' + str(id), cookies = r.cookies)
+    info = requests.get('https://www.halliganhelper.com/api/v3/school/courses/16/requests/' + str(id), cookies = r.cookies, verify=False)
     req = json.loads(info.text)
 
     out = ("New request: {}, at {}, by {}".format(req['question'], req['where_located'], req['requestor']['first_name']))
