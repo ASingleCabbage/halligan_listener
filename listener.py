@@ -1,4 +1,4 @@
-import json, sys, itertools
+import json, sys, itertools, time
 from json import JSONDecodeError
 from websocket import create_connection
 import requests
@@ -12,9 +12,12 @@ engine.setProperty('rate', 180)
 
 ws = create_connection("wss://www.halliganhelper.com/ws/ta?subscribe-broadcast", sslopt={"cert_reqs": ssl.CERT_NONE})
 
+# seconds after ping fail
+retryInterval = 5
+
 # fill this in before running
-loginEmail = ''
-loginPassword = ''
+loginEmail = 'hao-wei.lan@tufts.edu'
+loginPassword = '55Tomatoes'
 
 assert (loginEmail != ''), 'login email not set'
 assert (loginPassword != ''), 'login password not set'
@@ -41,6 +44,10 @@ while (True):
     try:
         ping = json.loads(ws.recv())
     except JSONDecodeError:
+        pass
+    except OSError:
+        time.sleep(retryInterval)
+        # usually due to network being temporarily down
         pass
     else:
         if (ping['type'] == 'request_created'):
