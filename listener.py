@@ -16,8 +16,8 @@ ws = create_connection("wss://www.halliganhelper.com/ws/ta?subscribe-broadcast",
 retryInterval = 5
 
 # fill this in before running
-loginEmail = 'hao-wei.lan@tufts.edu'
-loginPassword = '55Tomatoes'
+loginEmail = ''
+loginPassword = ''
 
 assert (loginEmail != ''), 'login email not set'
 assert (loginPassword != ''), 'login password not set'
