@@ -9,7 +9,7 @@ post==1.0.2
 public==2.0.1
 pypiwin32==223
 pyttsx3==2.7
-pywin32==224
+pywin32==301
 query-string==1.0.2
 request==1.0.2
 requests==2.20.1
